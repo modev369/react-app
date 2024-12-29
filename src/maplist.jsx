@@ -1,15 +1,26 @@
-function Maplist() {
-    const services = ["", "Cow", "Snake", "Lizard"];
-    const animalsList = services.map((service) => <li key={service}>{service}</li>)
-  
-    return (
-      <div>
-        <h2>Available Games: </h2>
-        <ul>
-          {animalsList}
-        </ul>
-      </div>
-    );
-  }
+function ListItem(props) {
+  return <li>{props.animal}</li>
+}
 
-  export default Maplist;
+function List(props) {
+  return (
+    <ul>
+      {props.animals.map((animal) => {
+        return <ListItem key={animal} animal={animal} />;
+      })}
+    </ul>
+  );
+}
+
+function Maplist() {
+  const animals = ["Lion", "Cow", "Snake", "Lizard"];
+
+  return (
+    <div>
+      <h1>Animals: </h1>
+      <List animals={animals} />
+    </div>
+  );
+}
+
+export default Maplist;
